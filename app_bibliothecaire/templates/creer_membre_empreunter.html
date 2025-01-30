@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Ajouter un membre{% endblock %}
+{% block content %}
+    <h3>Ajouter un membre!</h3>
+    <form action="" method="post" novalidate>
+        {% csrf_token %} {{ creationLivre }}
+        <input type="submit" value="Créer" />
+    </form>
+{% endblock %}

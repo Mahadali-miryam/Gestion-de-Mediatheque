@@ -1,0 +1,16 @@
+[
+    {
+       "model": "app_bibliothecaire.membre",
+        "pk": 1,
+        "fields": {
+            "nom": "Miryam MAHADALI"
+        }
+    },
+    {
+       "model": "app_bibliothecaire.membre",
+        "pk": 2,
+        "fields": {
+            "nom": "Prisca KAKAY"
+        }
+    }
+]

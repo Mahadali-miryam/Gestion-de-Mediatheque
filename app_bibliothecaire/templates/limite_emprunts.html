@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Limite d'emprunts{% endblock %}
+{% block content %}
+    <h3>Limite d'emprunts atteinte</h3>
+    <p>
+        Désolé, vous avez atteint la limite d'emprunts autorisés. Vous ne
+        pouvez pas emprunter de nouveaux médias pour le moment.
+    </p>
+    <a href="{% url 'liste_emprunts' %}">Retour à l'accueil</a>
+{% endblock %}

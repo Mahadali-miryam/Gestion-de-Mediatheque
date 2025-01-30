@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Liste des jeux de plateau{% endblock %}
+{% block content %}
+    <h3>
+        Liste des jeux de plateau &nbsp;|&nbsp;
+        <a href="{% url 'ajouter_jeu_de_plateau' %}"
+            >Ajouter un jeu de plateau
+        </a>
+    </h3>
+    <ul>
+        {% for jeu in jeux %}
+        <li>
+            <span>Nom : </span>{{ jeu.nom }} - <span>Créateur : </span>{{jeu.createur }}
+            {% if jeu.disponible %}
+            <a href="{% url 'supprimer_jeu' jeu.id %}">Supprimer</a>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

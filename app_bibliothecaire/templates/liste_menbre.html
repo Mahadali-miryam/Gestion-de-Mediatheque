@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Liste des membres{% endblock %}
+{% block content %}
+    <p>
+        <h3>Liste des membres &nbsp;|&nbsp; <a href="{% url 'ajoutmembre' %}">Ajouter un membre</a></h3>
+    </p>
+    <ul>
+        {% for membre in membres %}
+            <li>{{ membre.nom }} <a href="{% url 'mettre_a_jour_membre' membre_id=membre.id %}">Mettre à jour</a>&nbsp;|&nbsp; <a href="{% url 'supprimer_membre' membre.id %}">Supprimer</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

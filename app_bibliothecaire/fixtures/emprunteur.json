@@ -1,0 +1,16 @@
+[
+    {
+        "model": "app_bibliothecaire.emprunteur",
+        "pk": 1,
+        "fields": {
+            "nom": "Megane SIGNES"
+        }
+    },
+    {
+        "model": "app_bibliothecaire.emprunteur",
+        "pk": 2,
+        "fields": {
+            "nom": "Maeva AVA"
+        }
+    }
+]

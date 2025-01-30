@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% now "Y-m-d H:i:s" as now %}
+{% block title %}Liste des emprunts{% endblock %}
+
+{% block content %}
+    <div>
+        <h2>Liste des emprunts</h2>
+        <a href="{% url 'liste_medias' %}">Voir tous les médias</a>
+    </div>
+
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Membre</th>
+            <th>Média Emprunté</th>
+            <th>Date d'Emprunt</th>
+            <th>Date de Retour</th>
+            <th>Action</th>
+        </tr>
+        {% for emprunt in emprunts %}
+        <tr>
+            <td>{{ emprunt.id }}</td>
+            <td>{{ emprunt.membre.nom }}</td>
+            <td>
+                {% if emprunt.media %}
+                    {{ emprunt.media.titre }}
+                {% else %}
+                    -
+                {% endif %}
+            </td>
+            <td>{{ emprunt.date_emprunt|date:"d M, Y" }}</td>
+            <td>
+                {% if emprunt.date_retour %}
+                    {{ emprunt.date_retour|date:"d M, Y H:i:s" }}
+                {% else %}
+                    Non défini
+                {% endif %}
+            </td>
+            <td>
+                {% if not emprunt.date_retour or emprunt.date_retour > now %}
+                    <a href="{% url 'retourner_media' emprunt.id %}">Retourner</a>
+                {% else %}
+                    <p>Retour déjà effectué</p>
+                {% endif %}
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="6">Aucun emprunt en cours.</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

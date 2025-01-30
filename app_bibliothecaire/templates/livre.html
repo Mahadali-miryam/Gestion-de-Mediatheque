@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Liste des livres{% endblock %}
+{% block content %}
+    <h3>
+        Listes des livres &nbsp;|&nbsp;
+        <a href="{% url 'ajouter_livre' %}">Ajouter un livre</a>
+    </h3>
+    <ul>
+        {% for livre in livres %}
+        <li>
+            <span>Nom du livre : </span>{{ livre.nom }} -
+            <span>Auteur : </span>{{ livre.auteur }}
+            {% if livre.disponible %}
+            <a href="{% url 'supprimer_livre' livre.id %}">Supprimer</a>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

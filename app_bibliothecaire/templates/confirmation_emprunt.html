@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}Confirmation d'emprunt{% endblock %}
+{% block content %}
+    <h3>Emprunt effectué avec succès !</h3>
+    <p>Votre média a été emprunté avec succès. Merci !</p>
+    <a href="{% url 'liste_emprunts' %}">Retour à l'accueil</a>
+{% endblock %}

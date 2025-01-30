@@ -1,0 +1,69 @@
+[
+    {
+       "model": "app_bibliothecaire.livre",
+        "pk": 1,
+        "fields": {
+            "nom": "Harry Potter à l'école des sorciers",
+            "date_emprunt": "2024-07-01",
+            "disponible": false,
+            "emprunteur": 1,
+            "auteur": "J.K. Rowling"
+        }
+    },
+    {
+       "model": "app_bibliothecaire.livre",
+        "pk": 2,
+        "fields": {
+            "nom": "Chroniques martiennes",
+            "date_emprunt": null,
+            "disponible": true,
+            "emprunteur": null,
+            "auteur": "Ray Bradbury"
+        }
+    },
+    {
+        "model": "app_bibliothecaire.dvd",
+        "pk": 1,
+        "fields": {
+            "nom": "Starship Troopers",
+            "date_emprunt": "2024-06-20",
+            "disponible": false,
+            "emprunteur": 2,
+            "realisateur": "Paul Verhoeven"
+        }
+    },
+    {
+        "model": "app_bibliothecaire.dvd",
+        "pk": 2,
+        "fields": {
+            "nom": "La Grande Vadrouille",
+            "date_emprunt": null,
+            "disponible": true,
+            "emprunteur": null,
+            "realisateur": "Gérard Oury"
+        }
+    },
+    {
+        "model": "app_bibliothecaire.cd",
+        "pk": 1,
+        "fields": {
+            "nom": "Bad",
+            "date_emprunt": "2024-06-20",
+            "disponible": false,
+            "emprunteur": 2,
+            "artiste": "Michael Jackson"
+        }
+    },
+    {
+        "model": "app_bibliothecaire.cd",
+        "pk": 2,
+        "fields": {
+            "nom": "True Blue",
+            "date_emprunt": null,
+            "disponible": true,
+            "emprunteur": null,
+            "artiste": "Madonna"
+        }
+    }
+
+]

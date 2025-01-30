@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Liste des DVDs{% endblock %}
+{% block content %}
+    <h3>
+        Liste des DVD &nbsp;|&nbsp;
+        <a href="{% url 'ajouter_dvd' %}">Ajouter un DVD</a>
+    </h3>
+    <ul>
+        {% for dvd in dvds %}
+        <li>
+            <span>Nom : </span>{{ dvd.nom }} - <span>Réalisateur : </span>{{dvd.realisateur }}
+            {% if dvd.disponible %}
+            <a href="{% url 'supprimer_dvd' dvd.id %}">Supprimer</a>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

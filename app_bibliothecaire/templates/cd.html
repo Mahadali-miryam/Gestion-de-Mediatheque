@@ -1,19 +1,33 @@
 {% extends "base.html" %}
+
 {% block title %}Liste des CDs{% endblock %}
+
 {% block content %}
+
+    <!-- Titre et lien pour ajouter un CD -->
     <h3>
-        Liste des CD &nbsp;|&nbsp;
-        <a href="{% url 'ajouter_cd' %}">Ajouter un CD</a>
+        🎵 Liste des CD &nbsp;|&nbsp;
+        <a href="{% url 'ajouter_cd' %}">➕ Ajouter un CD</a>
     </h3>
+
+    <!-- Vérification si des CDs existent -->
+    {% if cds %}
+
     <ul>
         {% for cd in cds %}
         <li>
-            <span>Nom : </span>{{ cd.nom }} - <span>Artiste : </span>{{cd.artiste }}
-            {{ cd.disponible}}
+             <strong>🎶 Nom :</strong> {{ cd.nom }} -
+                <strong>🎤 Artiste :</strong> {{ cd.artiste }}
+
+              <!-- Vérification si le CD est disponible -->
             {% if cd.disponible %}
-            <a href="{% url 'supprimer_cd' cd.id %}">Supprimer</a>
+
+            <a href="{% url 'supprimer_cd' cd.id %}" onclick="return confirm('Voulez-vous vraiment supprimer ce CD ?');">❌ Supprimer</a>
             {% endif %}
         </li>
         {% endfor %}
     </ul>
+ {% else %}
+        <p>Aucun CD disponible pour le moment.</p>
+    {% endif %}
 {% endblock %}

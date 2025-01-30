@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="fr">
+    {% load static %}
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="{% static 'style.css' %}" />
+        <title>Retourner un média</title>
+    </head>
+    <body>
+        <h1>Retourner un média</h1>
+
+        <!-- Formulaire pour renvoyer un média emprunté -->
+        <form method="post" action="{% url 'confirmer_rectour' id=media.id %}">
+            {% csrf_token %}
+            <button type="submit">Confirmer le retour </button>
+        </form>
+    </body>
+</html>

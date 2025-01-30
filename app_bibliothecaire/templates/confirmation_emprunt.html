@@ -1,7 +1,13 @@
 {% extends "base.html" %}
+
 {% block title %}Confirmation d'emprunt{% endblock %}
+
 {% block content %}
-    <h3>Emprunt effectué avec succès !</h3>
-    <p>Votre média a été emprunté avec succès. Merci !</p>
-    <a href="{% url 'liste_emprunts' %}">Retour à l'accueil</a>
+
+    <!-- Message de confirmation -->
+    <h3>✅ Emprunt réussi !</h3>
+    <p>Votre média a bien été emprunté. Merci et bonne lecture ! 📚</p>
+
+    <!-- Lien pour revenir à la liste des emprunts -->
+    <a href="{% url 'liste_emprunts' %}">🔙 Retour aux emprunts</a>
 {% endblock %}

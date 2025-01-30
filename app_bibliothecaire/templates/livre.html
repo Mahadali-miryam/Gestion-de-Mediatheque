@@ -3,17 +3,29 @@
 {% block content %}
     <h3>
         Listes des livres &nbsp;|&nbsp;
-        <a href="{% url 'ajouter_livre' %}">Ajouter un livre</a>
+         <!-- Lien pour ajouter un nouveau livre -->
+        <a href="{% url 'ajouter_livre' %}">➕ Ajouter un livre</a>
     </h3>
+
+ <!-- Vérification si des livres existent dans la base -->
+    {% if livres %}
+
     <ul>
         {% for livre in livres %}
         <li>
-            <span>Nom du livre : </span>{{ livre.nom }} -
-            <span>Auteur : </span>{{ livre.auteur }}
+             <!-- Affichage du titre et de l'auteur du livre -->
+                <span><strong>Nom du livre :</strong> {{ livre.nom }}</span> -
+                <span><strong>Auteur :</strong> {{ livre.auteur }}</span>
+
+            <!-- Vérifie si le livre est disponible avant d'afficher le bouton supprimer -->
             {% if livre.disponible %}
-            <a href="{% url 'supprimer_livre' livre.id %}">Supprimer</a>
+                <a href="{% url 'supprimer_livre' livre.id %}"> ❌ Supprimer</a>
             {% endif %}
         </li>
         {% endfor %}
     </ul>
+{% else %}
+        <!-- Message affiché si aucun livre n'est disponible -->
+        <p>Aucun livre disponible pour le moment.</p>
+    {% endif %}
 {% endblock %}

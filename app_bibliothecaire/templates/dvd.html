@@ -2,17 +2,26 @@
 {% block title %}Liste des DVDs{% endblock %}
 {% block content %}
     <h3>
-        Liste des DVD &nbsp;|&nbsp;
-        <a href="{% url 'ajouter_dvd' %}">Ajouter un DVD</a>
+        📀 Liste des DVD &nbsp;|&nbsp;
+
+        <!-- Lien pour ajouter un nouveau DVD -->
+        <a href="{% url 'ajouter_dvd' %}">➕ Ajouter un DVD</a>
     </h3>
+  <!-- Vérification s'il y a des DVDs -->
+    {% if dvds %}
     <ul>
         {% for dvd in dvds %}
         <li>
-            <span>Nom : </span>{{ dvd.nom }} - <span>Réalisateur : </span>{{dvd.realisateur }}
+            <span>🎬 Titre: </span>{{ dvd.titre }} - <span>🎥 Réalisateur : </span>{{dvd.realisateur }}
+
+            <!-- Vérifie si le DVD est disponible avant de proposer la suppression -->
             {% if dvd.disponible %}
-            <a href="{% url 'supprimer_dvd' dvd.id %}">Supprimer</a>
+            <a href="{% url 'supprimer_dvd' dvd.id %}" onclick="return confirm('Voulez-vous vraiment supprimer ce DVD ?');">❌ Supprimer</a>
             {% endif %}
         </li>
         {% endfor %}
     </ul>
+    {% else %}
+        <p>Aucun DVD disponible.</p>
+    {% endif %}
 {% endblock %}

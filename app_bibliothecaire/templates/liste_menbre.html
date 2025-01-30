@@ -2,11 +2,23 @@
 {% block title %}Liste des membres{% endblock %}
 {% block content %}
     <p>
-        <h3>Liste des membres &nbsp;|&nbsp; <a href="{% url 'ajoutmembre' %}">Ajouter un membre</a></h3>
+        <h3>Liste des membres </h3>
+
+    <!-- Lien pour ajouter un nouveau membre -->
+    <p>
+        <a href="{% url 'ajoutmembre' %}"> ➕ Ajouter un membre</a>
     </p>
+    <!-- Affichage de la liste des membres -->
     <ul>
         {% for membre in membres %}
-            <li>{{ membre.nom }} <a href="{% url 'mettre_a_jour_membre' membre_id=membre.id %}">Mettre à jour</a>&nbsp;|&nbsp; <a href="{% url 'supprimer_membre' membre.id %}">Supprimer</a></li>
+            <li>
+                {{ membre.nom }}
+                <!-- Lien pour mettre à jour un membre -->
+                <a href="{% url 'mettre_a_jour_membre' membre_id=membre.id %}">✏️ Mettre à jour</a>&nbsp;|&nbsp;
+
+                <!-- Lien pour supprimer un membre -->
+                <a href="{% url 'supprimer_membre' membre.id %}" onclick="return confirm('Voulez-vous vraiment supprimer ce membre ?');">❌ Supprimer</a>
+            </li>
         {% endfor %}
     </ul>
 {% endblock %}

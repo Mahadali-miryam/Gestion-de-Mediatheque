@@ -90,7 +90,7 @@ def emprunter_media(request, media_type, media_id):
 
     media = get_object_or_404(media_class, id=media_id)
 
-    membre = Membre.objects.first()  # Modifier pour récupérer l'utilisateur connecté
+    membre = request.user  # Modifier pour récupérer l'utilisateur connecté
 
     if media.disponible and membre.peut_emprunter():
         Emprunt.objects.create(membre=membre, media=media, date_emprunt=timezone.now())

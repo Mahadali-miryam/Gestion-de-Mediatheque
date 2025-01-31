@@ -1,8 +1,11 @@
 from django.urls import path
 from .views import liste_membres, ajout_membre, supprimer_membre, liste_medias, ajouter_media, supprimer_media, \
     liste_emprunts, emprunter_media, retourner_media
+from . import views
+
 
 urlpatterns = [
+    path('', views.custom_login, name='login'),
     path('membres/', liste_membres, name='liste_membres'),
     path('membres/ajout/', ajout_membre, name='ajout_membre'),
     path('membres/supprimer/<int:membre_id>/', supprimer_membre, name='supprimer_membre'),

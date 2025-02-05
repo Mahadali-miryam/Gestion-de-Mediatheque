@@ -1,16 +1,18 @@
 [
     {
-       "model": "app_bibliothecaire.membre",
+        "model": "app_bibliothecaire.membre",
         "pk": 1,
         "fields": {
-            "nom": "Miryam MAHADALI"
+            "nom": "Megane SIGNES",
+            "email": "megane@example.com"
         }
     },
     {
-       "model": "app_bibliothecaire.membre",
+        "model": "app_bibliothecaire.membre",
         "pk": 2,
         "fields": {
-            "nom": "Prisca KAKAY"
+            "nom": "Maeva AVA",
+            "email": "maeva@example.com"
         }
     }
 ]

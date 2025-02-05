@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}🎲 Ajouter un jeu de plateau{% endblock %}
+
+{% block content %}
+    <h3>🎯 Ajouter un nouveau jeu de plateau</h3>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <!-- Nom du jeu -->
+        <div>
+            <label for="nom">🎲 Nom du jeu :</label><br />
+            <input type="text" id="nom" name="nom" placeholder="Ex: Monopoly" required />
+        </div>
+        <br />
+
+        <!-- Créateur du jeu -->
+        <div>
+            <label for="createur">✍ Créateur :</label><br />
+            <input type="text" id="createur" name="createur" placeholder="Ex: Charles Darrow" required />
+        </div>
+        <br />
+
+        <!-- Bouton d'ajout -->
+        <input type="submit" value="✅ Ajouter" />
+    </form>
+
+{% endblock %}

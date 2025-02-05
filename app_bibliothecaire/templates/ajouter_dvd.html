@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Ajouter un DVD{% endblock %}
+
+{% block content %}
+    <h2>🎬 Ajouter un DVD</h2>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <label for="titre">Titre du DVD :</label><br />
+        <input type="text" id="titre" name="titre" placeholder="Ex: Inception" required/><br />
+
+        <label for="realisateur">Réalisateur :</label><br />
+        <input type="text" id="realisateur" name="realisateur" placeholder="Ex: Christopher Nolan" required/><br />
+
+        <button type="submit">Ajouter le DVD</button>
+    </form>
+
+    <p><a href="{% url 'liste_medias' %}">⬅ Retour à la liste des médias</a></p>
+{% endblock %}

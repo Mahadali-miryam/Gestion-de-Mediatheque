@@ -1,16 +1,17 @@
 [
     {
-        "model": "app_bibliothecaire.emprunteur",
+        "model": "app_bibliothecaire.membre",
         "pk": 1,
         "fields": {
             "nom": "Megane SIGNES"
         }
     },
     {
-        "model": "app_bibliothecaire.emprunteur",
+        "model": "app_bibliothecaire.membre",
         "pk": 2,
         "fields": {
             "nom": "Maeva AVA"
+
         }
     }
 ]

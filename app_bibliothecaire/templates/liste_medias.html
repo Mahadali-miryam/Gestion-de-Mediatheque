@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}Catalogue des Médias{% endblock %}
+
+{% block content %}
+    <h1>Catalogue des Médias</h1>
+
+    <!-- Section des livres -->
+    <section>
+        <h2>📚 Livres</h2>
+        <a href="{% url 'ajouter_livre' %}">➕ Ajouter un livre</a>
+        {% if livres %}
+            <ul>
+                {% for livre in livres %}
+                    <li><strong>{{ livre.nom }}</strong> - Auteur : {{ livre.auteur }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Aucun livre disponible.</p>
+        {% endif %}
+    </section>
+
+    <!-- Section des CDs -->
+    <section>
+        <h2>🎵 CDs</h2>
+        <a href="{% url 'ajouter_cd' %}">➕ Ajouter un CD</a>
+        {% if cds %}
+            <ul>
+                {% for cd in cds %}
+                    <li><strong>{{ cd.nom }}</strong> - Artiste : {{ cd.artiste }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Aucun CD disponible.</p>
+        {% endif %}
+    </section>
+
+    <!-- Section des DVDs -->
+    <section>
+        <h2>🎬 DVDs</h2>
+        <a href="{% url 'ajouter_dvd' %}">➕ Ajouter un DVD</a>
+        {% if dvds %}
+            <ul>
+                {% for dvd in dvds %}
+                    <li><strong>{{ dvd.nom }}</strong> - Réalisateur : {{ dvd.realisateur }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Aucun DVD disponible.</p>
+        {% endif %}
+    </section>
+
+    <!-- Section des Jeux de Plateau -->
+    <section>
+        <h2>🎲 Jeux de Plateau</h2>
+        <a href="{% url 'ajouter_jeu_de_plateau' %}">➕ Ajouter un jeu de plateau</a>
+        {% if jeux %}
+            <ul>
+                {% for jeu in jeux %}
+                    <li><strong>{{ jeu.nom }}</strong> - Créateur : {{ jeu.createur }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Aucun jeu de plateau disponible.</p>
+        {% endif %}
+    </section>
+
+{% endblock %}

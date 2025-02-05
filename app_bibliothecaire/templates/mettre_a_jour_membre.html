@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Modification des informations du membre{% endblock %}
+
+{% block content %}
+    <h3>Modifier les informations du membre</h3>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <label for="nom_membre">Nom du membre :</label><br />
+        <input
+            type="text"
+            id="nom_membre"
+            name="nom_membre"
+            value="{{ membre.nom }}"
+            required
+        /><br />
+
+        <button type="submit">Enregistrer les modifications</button>
+        <a href="{% url 'liste_membres' %}">
+            <button type="button">Annuler</button>
+        </a>
+    </form>
+{% endblock %}

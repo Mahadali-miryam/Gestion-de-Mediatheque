@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Emprunts en retard{% endblock %}
+
+{% block content %}
+    <p>
+        Désolé, vous avez un emprunt en retard. Vous ne pouvez pas emprunter de nouveaux médias.
+    </p>
+
+    <h3>Liste des emprunts en retard</h3>
+    {% if emprunts %}
+        <ul>
+            {% for emprunt in emprunts %}
+            <li>
+                {{ emprunt.membre.nom }} - {{ emprunt.date_emprunt|date:"d/m/Y" }} -
+                {{ emprunt.date_retour|date:"d/m/Y" }}
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Aucun emprunt en retard.</p>
+    {% endif %}
+
+    <a href="{% url 'liste_emprunts' %}">
+        <button>Retour à l'accueil</button>
+    </a>
+{% endblock %}

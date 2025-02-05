@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+    {% load static %}
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Accès à votre compte</title>
+        <link rel="stylesheet" href="{% static 'style.css' %}" />
+    </head>
+    <body>
+        <h2>Connexion à l'espace membre</h2>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <label for="identifiant">Identifiant :</label>
+            <input type="text" id="identifiant" name="username" placeholder="Votre identifiant" />
+
+            <label for="motdepasse">Mot de passe :</label>
+            <input type="password" id="motdepasse" name="password" placeholder="Votre mot de passe" />
+
+            <button type="submit">Se connecter</button>
+        </form>
+
+        <p><a href="#">Mot de passe oublié ?</a></p>
+
+        <h3>Navigation</h3>
+        <ul>
+            <li><a href="{% url 'liste_medias' %}">Voir les médias</a></li>
+            <li><a href="{% url 'ajout_membre' %}">Créer un compte</a></li>
+        </ul>
+
+        {% if error_message %}
+        <p style="color: red;">⚠️ {{ error_message }}</p>
+        {% endif %}
+    </body>
+</html>

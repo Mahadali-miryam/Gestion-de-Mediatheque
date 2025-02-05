@@ -10,7 +10,7 @@
         <h1>Retourner un média</h1>
 
         <!-- Formulaire pour renvoyer un média emprunté -->
-        <form method="post" action="{% url 'confirmer_rectour' id=media.id %}">
+        <form method="post" action="{% url 'confirmer_media' id=media.id %}">
             {% csrf_token %}
             <button type="submit">Confirmer le retour </button>
         </form>

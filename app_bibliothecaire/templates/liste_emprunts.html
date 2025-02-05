@@ -33,7 +33,7 @@
             <td>{{ emprunt.date_emprunt|date:"d M, Y" }}</td>
             <td>
                 {% if emprunt.date_retour %}
-                    {{ emprunt.date_retour|date:"d M, Y H:i:s" }}
+
                 {% else %}
                     🔹 En attente de retour
                 {% endif %}

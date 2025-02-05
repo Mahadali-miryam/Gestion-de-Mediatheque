@@ -1,20 +1,37 @@
 from django.urls import path
-from .views import liste_membres, ajout_membre, supprimer_membre, liste_medias, ajouter_media, supprimer_media, \
-    liste_emprunts, emprunter_media, retourner_media
 from . import views
 
-
 urlpatterns = [
+    # 🔐 Authentification
     path('', views.custom_login, name='login'),
-    path('membres/', liste_membres, name='liste_membres'),
-    path('membres/ajout/', ajout_membre, name='ajout_membre'),
-    path('membres/supprimer/<int:membre_id>/', supprimer_membre, name='supprimer_membre'),
+    path('logout/', views.custom_logout, name='logout'),
 
-    path('medias/', liste_medias, name='liste_medias'),
-    path('medias/ajouter/<str:media_type>/', ajouter_media, name='ajouter_media'),
-    path('medias/supprimer/<int:media_id>/<str:media_type>/', supprimer_media, name='supprimer_media'),
+    # 👥 Gestion des membres
+    path('membres/', views.liste_membres, name='liste_membres'),
+    path('ajout-membre/', views.ajout_membre, name='ajout_membre'),
+    path('modifier-membre/<int:membre_id>/', views.modifier_membre, name='modifier_membre'),
+    path('supprimer-membre/<int:membre_id>/', views.supprimer_membre, name='supprimer_membre'),
 
-    path('emprunts/', liste_emprunts, name='liste_emprunts'),
-    path('emprunter/<str:media_type>/<int:media_id>/', emprunter_media, name='emprunter_media'),
-    path('retourner/<int:emprunt_id>/', retourner_media, name='retourner_media'),
+    # 📚 Gestion des médias
+    path('medias/', views.liste_medias, name='liste_medias'),
+    path('ajouter-livre/', views.ajouter_livre, name='ajouter_livre'),
+    path('ajouter-dvd/', views.ajouter_dvd, name='ajouter_dvd'),
+    path('ajouter-cd/', views.ajouter_cd, name='ajouter_cd'),
+    path('ajouter-jeu-de-plateau/', views.ajouter_jeu_de_plateau, name='ajouter_jeu_de_plateau'),
+
+    # 📖 Gestion des emprunts
+    path('emprunter/<str:media_type>/<int:media_id>/', views.emprunter_media, name='emprunter_media'),
+    path('retourner/<int:emprunt_id>/', views.retourner_media, name='retourner_media'),
+    path('emprunts/', views.liste_emprunts, name='liste_emprunts'),
+
+
+    # 🗑 Suppression des médias (Ajoute ces lignes si elles manquent)
+    path('supprimer-livre/<int:livre_id>/', views.supprimer_livre, name='supprimer_livre'),
+    path('supprimer-dvd/<int:dvd_id>/', views.supprimer_dvd, name='supprimer_dvd'),
+    path('supprimer-cd/<int:cd_id>/', views.supprimer_cd, name='supprimer_cd'),
+
+    # ℹ️ Pages d'information
+    path('confirmation-emprunt/', views.confirmation_emprunt, name='confirmation_emprunt'),
+    path('limite-emprunts/', views.limite_emprunts, name='limite_emprunts'),
+    path('emprunts-en-retard/', views.emprunts_en_retard, name='emprunts_en_retard'),
 ]

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}📚 Ajouter un livre{% endblock %}
+
+{% block content %}
+    <h3>📖 Ajouter un nouveau livre</h3>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <!-- Nom du livre -->
+        <div>
+            <label for="titre">📌 Titre du livre :</label><br />
+            <input type="text" id="titre" name="titre" placeholder="Ex: Le Petit Prince" required />
+        </div>
+        <br />
+
+        <!-- Auteur du livre -->
+        <div>
+            <label for="auteur">✍ Auteur :</label><br />
+            <input type="text" id="auteur" name="auteur" required />
+        </div>
+        <br />
+
+        <!-- Bouton d'ajout -->
+        <input type="submit" value="✅ Ajouter" />
+    </form>
+
+{% endblock %}

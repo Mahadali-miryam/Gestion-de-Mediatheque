@@ -1,19 +1,29 @@
 {% extends "base.html" %}
-{% now "Y-m-d H:i:s" as now %} <!-- Récupère la date actuelle -->
-{% block title %}Liste des emprunts{% endblock %}
+
+{% now "Y-m-d H:i:s" as now %}
+{% block title %}Liste des Emprunts{% endblock %}
 
 {% block content %}
-    <div>
-        <h2>📚 Liste des emprunts</h2>
-        <!-- Lien vers la liste complète des médias -->
-        <a href="{% url 'liste_medias' %}">📂 Voir tous les médias</a>
-    </div>
+    <h1>📖 Liste des Emprunts</h1>
+
+  <h2>
+      <a href="{% url 'liste_medias' %}" class="btn">📚 Voir la liste des médias</a>
+  </h2>
+
+    <h3>
+        Liste des médias empruntés &nbsp;|&nbsp;
+        <a href="{% url 'emprunter_media' media_type='livre' media_id=1 %}" class="btn">📖 Emprunter Livre</a>
+        <a href="{% url 'emprunter_media' media_type='dvd' media_id=1 %}" class="btn">🎬 Emprunter DVD</a>
+        <a href="{% url 'emprunter_media' media_type='cd' media_id=1 %}" class="btn">🎵 Emprunter CD</a>
+    </h3>
 
     <table border="1">
         <tr>
             <th>ID</th>
             <th>Membre</th>
-            <th>Média Emprunté</th>
+            <th>Livre Emprunté</th>
+            <th>DVD Emprunté</th>
+            <th>CD Emprunté</th>
             <th>Date d'Emprunt</th>
             <th>Date de Retour</th>
             <th>Action</th>
@@ -23,33 +33,31 @@
         <tr>
             <td>{{ emprunt.id }}</td>
             <td>{{ emprunt.membre.nom }}</td>
-            <td>
-                {% if emprunt.media %}
-                    {{ emprunt.media.titre }} <!-- Affiche le titre du média -->
-                {% else %}
-                     ❌ Média introuvable
-                {% endif %}
-            </td>
+            <td>{{ emprunt.livre_emprunte.nom|default:"-" }}</td>
+            <td>{{ emprunt.dvd_emprunte.nom|default:"-" }}</td>
+            <td>{{ emprunt.cd_emprunte.nom|default:"-" }}</td>
             <td>{{ emprunt.date_emprunt|date:"d M, Y" }}</td>
+            <td>{{ emprunt.date_retour|date:"d M, Y H:i:s" }}</td>
             <td>
-                {% if emprunt.date_retour %}
-
+                {% if emprunt.date_retour is None or emprunt.date_retour > now %}
+                    {% if emprunt.livre_emprunte %}
+                        <a href="{% url 'retourner_media' media_type='livre' media_id=emprunt.livre_emprunte.id %}" class="btn">↩ Retourner</a>
+                    {% elif emprunt.dvd_emprunte %}
+                        <a href="{% url 'retourner_media' media_type='dvd' media_id=emprunt.dvd_emprunte.id %}" class="btn">↩ Retourner</a>
+                    {% elif emprunt.cd_emprunte %}
+                        <a href="{% url 'retourner_media' media_type='cd' media_id=emprunt.cd_emprunte.id %}" class="btn">↩ Retourner</a>
+                    {% endif %}
                 {% else %}
-                    🔹 En attente de retour
-                {% endif %}
-            </td>
-            <td>
-                {% if not emprunt.date_retour or emprunt.date_retour > now %}
-                    <a href="{% url 'retourner_media' emprunt.id %}">🔄 Retourner</a>
-                {% else %}
-                    <p>  ✅ Déjà retourné</p>
+                    <p>✅ Retour effectué</p>
                 {% endif %}
             </td>
         </tr>
         {% empty %}
         <tr>
-            <td colspan="6">📭 Aucun emprunt en cours.</td>
+            <td colspan="8">📭 Aucun emprunt en cours.</td>
         </tr>
         {% endfor %}
     </table>
+
 {% endblock %}
+

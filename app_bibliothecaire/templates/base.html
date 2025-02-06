@@ -1,24 +1,30 @@
+
 <!DOCTYPE html>
+ {% load static %}
 <html lang="fr">
-    {% load static %}
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Médiathèque{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-
+   <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 </head>
 <body>
     <header>
           <img src="{% static 'images/logo_mediatheque.jpg' %}" alt="Logo Médiathèque">
-        <nav>
-            <ul>
-                <li><a href="{% url 'liste_membres' %}"><i class="fas fa-users"></i> Membres</a></li>
-                <li><a href="{% url 'liste_medias' %}"><i class="fas fa-book"></i> Médias</a></li>
 
-            </ul>
-        </nav>
         <h1>Médiathèque - Gestion des emprunts</h1>
+          <nav>
+            <a href="{% url 'liste_emprunts' %}">Les emprunts</a> &nbsp;|&nbsp;
+            <a href="{% url 'liste_membres' %}">La liste des membres</a>
+            &nbsp;|&nbsp;
+            <a href="{% url 'liste_livres' %}">La liste des livres</a>
+            &nbsp;|&nbsp;
+            <a href="{% url 'liste_cds' %}">La liste des CD</a> &nbsp;|&nbsp;
+            <a href="{% url 'liste_dvds' %}">La liste des DVD</a> &nbsp;|&nbsp;
+            <a href="{% url 'liste_jeux' %}">La liste des jeux de plateau</a>
+            &nbsp;|&nbsp;
+            <a href="{% url 'logout' %}">Déconnexion</a>
+        </nav>
     </header>
 
     <main>

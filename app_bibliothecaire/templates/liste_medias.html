@@ -2,18 +2,19 @@
 {% block title %}Catalogue des Médias{% endblock %}
 
 {% block content %}
-    <h1>Catalogue des Médias</h1>
+    <h1>📖 liste des Médias</h1>
 
     <!-- Section des livres -->
-    <section>
-        <h2>📚 Livres</h2>
+
+    <h2>📚 Livres
         <a href="{% url 'ajouter_livre' %}">➕ Ajouter un livre</a>
         {% if livres %}
             <ul>
                 {% for livre in livres %}
-                    <li><strong>{{ livre.nom }}</strong> - Auteur : {{ livre.auteur }}</li>
+                    <li><strong>{{ livre.titre }}</strong> - Auteur : {{ livre.auteur }}</li>
                 {% endfor %}
             </ul>
+       </h2>
         {% else %}
             <p>Aucun livre disponible.</p>
         {% endif %}
@@ -26,7 +27,7 @@
         {% if cds %}
             <ul>
                 {% for cd in cds %}
-                    <li><strong>{{ cd.nom }}</strong> - Artiste : {{ cd.artiste }}</li>
+                    <li><strong>{{ cd.titre }}</strong> - Artiste : {{ cd.artiste }}</li>
                 {% endfor %}
             </ul>
         {% else %}
@@ -41,7 +42,7 @@
         {% if dvds %}
             <ul>
                 {% for dvd in dvds %}
-                    <li><strong>{{ dvd.nom }}</strong> - Réalisateur : {{ dvd.realisateur }}</li>
+                    <li><strong>{{ dvd.titre }}</strong> - Réalisateur : {{ dvd.realisateur }}</li>
                 {% endfor %}
             </ul>
         {% else %}

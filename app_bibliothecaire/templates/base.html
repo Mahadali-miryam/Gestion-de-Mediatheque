@@ -6,13 +6,13 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Médiathèque{% endblock %}</title>
-   <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <header>
-          <img src="{% static 'images/logo_mediatheque.jpg' %}" alt="Logo Médiathèque">
+    <header >
+    <h1>
+        <img src="{% static 'images/logo_mediatheque.jpg' %}" alt="Logo Médiathèque" style="max-width: 120px; height: auto;">
 
-        <h1>Médiathèque - Gestion des emprunts</h1>
+        Médiathèque - Gestion des emprunts</h1>
           <nav>
             <a href="{% url 'liste_emprunts' %}">Les emprunts</a> &nbsp;|&nbsp;
             <a href="{% url 'liste_membres' %}">La liste des membres</a>

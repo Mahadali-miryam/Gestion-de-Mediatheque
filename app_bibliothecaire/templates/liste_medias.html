@@ -2,19 +2,29 @@
 {% block title %}Catalogue des Médias{% endblock %}
 
 {% block content %}
-    <h1>📖 liste des Médias</h1>
+    <h1>📖 Liste des Médias</h1>
 
-    <!-- Section des livres -->
-
-    <h2>📚 Livres
+    <!-- Section des Livres -->
+    <section>
+        <h2>📚 Livres</h2>
         <a href="{% url 'ajouter_livre' %}">➕ Ajouter un livre</a>
         {% if livres %}
-            <ul>
+            <table border="1">
+                <tr>
+                    <th>Titre</th>
+                    <th>Auteur</th>
+                    <th>Action</th>
+                </tr>
                 {% for livre in livres %}
-                    <li><strong>{{ livre.titre }}</strong> - Auteur : {{ livre.auteur }}</li>
+                <tr>
+                    <td><strong>{{ livre.titre }}</strong></td>
+                    <td>{{ livre.auteur }}</td>
+                    <td>
+                        <a href="{% url 'emprunter_media' media_type='livre' media_id=livre.id %}" class="btn">📖 Emprunter</a>
+                    </td>
+                </tr>
                 {% endfor %}
-            </ul>
-       </h2>
+            </table>
         {% else %}
             <p>Aucun livre disponible.</p>
         {% endif %}
@@ -25,11 +35,22 @@
         <h2>🎵 CDs</h2>
         <a href="{% url 'ajouter_cd' %}">➕ Ajouter un CD</a>
         {% if cds %}
-            <ul>
+            <table border="1">
+                <tr>
+                    <th>Titre</th>
+                    <th>Artiste</th>
+                    <th>Action</th>
+                </tr>
                 {% for cd in cds %}
-                    <li><strong>{{ cd.titre }}</strong> - Artiste : {{ cd.artiste }}</li>
+                <tr>
+                    <td><strong>{{ cd.titre }}</strong></td>
+                    <td>{{ cd.artiste }}</td>
+                    <td>
+                        <a href="{% url 'emprunter_media' media_type='cd' media_id=cd.id %}" class="btn">🎵 Emprunter</a>
+                    </td>
+                </tr>
                 {% endfor %}
-            </ul>
+            </table>
         {% else %}
             <p>Aucun CD disponible.</p>
         {% endif %}
@@ -40,11 +61,22 @@
         <h2>🎬 DVDs</h2>
         <a href="{% url 'ajouter_dvd' %}">➕ Ajouter un DVD</a>
         {% if dvds %}
-            <ul>
+            <table border="1">
+                <tr>
+                    <th>Titre</th>
+                    <th>Réalisateur</th>
+                    <th>Action</th>
+                </tr>
                 {% for dvd in dvds %}
-                    <li><strong>{{ dvd.titre }}</strong> - Réalisateur : {{ dvd.realisateur }}</li>
+                <tr>
+                    <td><strong>{{ dvd.titre }}</strong></td>
+                    <td>{{ dvd.realisateur }}</td>
+                    <td>
+                        <a href="{% url 'emprunter_media' media_type='dvd' media_id=dvd.id %}" class="btn">🎬 Emprunter</a>
+                    </td>
+                </tr>
                 {% endfor %}
-            </ul>
+            </table>
         {% else %}
             <p>Aucun DVD disponible.</p>
         {% endif %}
@@ -55,11 +87,22 @@
         <h2>🎲 Jeux de Plateau</h2>
         <a href="{% url 'ajouter_jeu_de_plateau' %}">➕ Ajouter un jeu de plateau</a>
         {% if jeux %}
-            <ul>
+            <table border="1">
+                <tr>
+                    <th>Titre</th>
+                    <th>Créateur</th>
+                    <th>Action</th>
+                </tr>
                 {% for jeu in jeux %}
-                    <li><strong>{{ jeu.nom }}</strong> - Créateur : {{ jeu.createur }}</li>
+                <tr>
+                    <td><strong>{{ jeu.nom }}</strong></td>
+                    <td>{{ jeu.createur }}</td>
+                    <td>
+                        <a href="{% url 'emprunter_media' media_type='jeu' media_id=jeu.id %}" class="btn">🎲 Emprunter</a>
+                    </td>
+                </tr>
                 {% endfor %}
-            </ul>
+            </table>
         {% else %}
             <p>Aucun jeu de plateau disponible.</p>
         {% endif %}

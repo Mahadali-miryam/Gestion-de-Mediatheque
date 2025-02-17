@@ -24,8 +24,10 @@ urlpatterns = [
     path('ajouter-jeu/', views.ajouter_jeu_de_plateau, name='ajouter_jeu_de_plateau'),
 
     # 📖 Gestion des emprunts
+# 📖 Gestion des emprunts
     path('emprunter/<str:media_type>/<int:media_id>/', views.emprunter_media, name='emprunter_media'),
     path('retourner/<int:emprunt_id>/', views.retourner_media, name='retourner_media'),
+
     path('emprunts/', views.liste_emprunts, name='liste_emprunts'),
 
     # 🗑 Suppression des médias

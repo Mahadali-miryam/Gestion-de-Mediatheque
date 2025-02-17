@@ -4,7 +4,7 @@
         "pk": 1,
         "fields": {
             "titre": "Bad",
-            "date_emprunt": "2024-06-20",
+            "date_emprunt": "2024-06-20T00:00:00Z ",
             "disponible": false,
             "emprunteur": 2,
             "artiste": "Michael Jackson"

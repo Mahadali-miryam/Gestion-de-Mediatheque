@@ -35,7 +35,8 @@ class Livre(models.Model):
     titre = models.CharField(max_length=100)
     auteur = models.CharField(max_length=100)
     disponible = models.BooleanField(default=True)
-
+    date_emprunt = models.DateTimeField(null=True, blank=True)
+    emprunteur = models.ForeignKey(Membre, on_delete=models.SET_NULL, null=True, blank=True)
     objects = models.Manager()
 
     def __str__(self):
@@ -46,7 +47,8 @@ class DVD(models.Model):
     titre = models.CharField(max_length=100)
     realisateur = models.CharField(max_length=100)
     disponible = models.BooleanField(default=True)
-
+    date_emprunt = models.DateTimeField(null=True, blank=True)
+    emprunteur = models.ForeignKey(Membre, on_delete=models.SET_NULL, null=True, blank=True)
     objects = models.Manager()
 
     def __str__(self):
@@ -57,7 +59,8 @@ class CD(models.Model):
     titre = models.CharField(max_length=100)
     artiste = models.CharField(max_length=100)
     disponible = models.BooleanField(default=True)
-
+    date_emprunt = models.DateTimeField(null=True, blank=True)
+    emprunteur = models.ForeignKey(Membre, on_delete=models.SET_NULL, null=True, blank=True)
     objects = models.Manager()
 
     def __str__(self):
@@ -87,5 +90,3 @@ class Emprunt(models.Model):
     date_retour = models.DateTimeField(default=date_retour_defaut, null=True, blank=True)
 
     objects = models.Manager()
-
-

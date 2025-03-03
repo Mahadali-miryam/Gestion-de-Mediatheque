@@ -11,9 +11,13 @@
     <ul>
         {% for jeu in jeux %}
         <li>
-            <span>🎮 Nom : </span>{{ jeu.nom }} - <span>👤 Créateur : </span>{{jeu.createur }}
+           <span>🎮 Nom :</span> {{ jeu.titre }} - <span>👤 Créateur :</span> {{ jeu.createur }}
+
             {% if jeu.disponible %}
-            <a href="{% url 'supprimer_jeu' jeu.id %}" onclick="return confirm('Voulez-vous vraiment supprimer ce jeu ?');"> ❌ Supprimer</a>
+                <a href="{% url 'supprimer_media' media_type='jeu' media_id=jeu.id %}"
+                   onclick="return confirm('Voulez-vous vraiment supprimer ce jeu ?');">
+                    🗑 Supprimer
+                </a>
             {% endif %}
         </li>
         {% endfor %}

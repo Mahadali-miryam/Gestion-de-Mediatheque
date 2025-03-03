@@ -16,13 +16,14 @@
     <ul>
         {% for cd in cds %}
         <li>
-             <strong>🎶 Nom :</strong> {{ cd.nom }} -
+
                 <strong>🎤 Artiste :</strong> {{ cd.artiste }}
 
               <!-- Vérification si le CD est disponible -->
             {% if cd.disponible %}
 
-            <a href="{% url 'supprimer_cd' cd.id %}" onclick="return confirm('Voulez-vous vraiment supprimer ce CD ?');">❌ Supprimer</a>
+          <a href="{% url 'supprimer_media' media_type='cd' media_id=cd.id %}" onclick="return confirm('Voulez-vous vraiment supprimer ce CD ?');"> 🗑 Supprimer</a>
+
             {% endif %}
         </li>
         {% endfor %}

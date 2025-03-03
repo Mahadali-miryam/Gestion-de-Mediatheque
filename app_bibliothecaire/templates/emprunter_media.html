@@ -19,16 +19,11 @@
         <!-- Sélection du média -->
         <label for="media">📀 Sélectionnez un média :</label>
         <select name="media_id" id="media">
-            {% if media %}
-              {% for item in media %}
-            {% if item.disponible %}
-                <option value="{{ item.id }}">{{ item.titre }}</option>
-                 {% endif %}
-                {% endfor %}
-            {% else %}
-
+           {% for media in medias %}
+                <option value="{{ media.id }}">{{ media.titre }}</option>
+            {% empty %}
                 <option disabled>⚠ Aucun média disponible</option>
-            {% endif %}
+            {% endfor %}
         </select>
         <br />
 

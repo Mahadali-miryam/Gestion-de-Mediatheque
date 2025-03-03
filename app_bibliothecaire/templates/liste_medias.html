@@ -1,111 +1,47 @@
-{% extends "base.html" %}
-{% block title %}Catalogue des Médias{% endblock %}
+<!-- Section des Livres -->
+<section>
+    <h2>📚 Livres</h2>
+    {% if livres %}
+        {% for livre in livres %}
+            <p><strong>{{ livre.titre }}</strong> - {{ livre.auteur }}</p>
+        {% endfor %}
+    {% else %}
+        <p>Aucun livre disponible.</p>
+    {% endif %}
+</section>
 
-{% block content %}
-    <h1>📖 Liste des Médias</h1>
+<!-- Section des CDs -->
+<section>
+    <h2>🎵 CDs</h2>
+    {% if cds %}
+        {% for cd in cds %}
+            <p><strong>{{ cd.titre }}</strong> - {{ cd.artiste }}</p>
+        {% endfor %}
+    {% else %}
+        <p>Aucun CD disponible.</p>
+    {% endif %}
+</section>
 
-    <!-- Section des Livres -->
-    <section>
-        <h2>📚 Livres</h2>
-        <a href="{% url 'ajouter_livre' %}">➕ Ajouter un livre</a>
-        {% if livres %}
-            <table border="1">
-                <tr>
-                    <th>Titre</th>
-                    <th>Auteur</th>
-                    <th>Action</th>
-                </tr>
-                {% for livre in livres %}
-                <tr>
-                    <td><strong>{{ livre.titre }}</strong></td>
-                    <td>{{ livre.auteur }}</td>
-                    <td>
-                        <a href="{% url 'emprunter_media' media_type='livre' media_id=livre.id %}" class="btn">📖 Emprunter</a>
-                    </td>
-                </tr>
-                {% endfor %}
-            </table>
-        {% else %}
-            <p>Aucun livre disponible.</p>
-        {% endif %}
-    </section>
+<!-- Section des DVDs -->
+<section>
+    <h2>🎬 DVDs</h2>
+    {% if dvds %}
+        {% for dvd in dvds %}
+            <p><strong>{{ dvd.titre }}</strong> - {{ dvd.realisateur }}</p>
+        {% endfor %}
+    {% else %}
+        <p>Aucun DVD disponible.</p>
+    {% endif %}
+</section>
 
-    <!-- Section des CDs -->
-    <section>
-        <h2>🎵 CDs</h2>
-        <a href="{% url 'ajouter_cd' %}">➕ Ajouter un CD</a>
-        {% if cds %}
-            <table border="1">
-                <tr>
-                    <th>Titre</th>
-                    <th>Artiste</th>
-                    <th>Action</th>
-                </tr>
-                {% for cd in cds %}
-                <tr>
-                    <td><strong>{{ cd.titre }}</strong></td>
-                    <td>{{ cd.artiste }}</td>
-                    <td>
-                        <a href="{% url 'emprunter_media' media_type='cd' media_id=cd.id %}" class="btn">🎵 Emprunter</a>
-                    </td>
-                </tr>
-                {% endfor %}
-            </table>
-        {% else %}
-            <p>Aucun CD disponible.</p>
-        {% endif %}
-    </section>
-
-    <!-- Section des DVDs -->
-    <section>
-        <h2>🎬 DVDs</h2>
-        <a href="{% url 'ajouter_dvd' %}">➕ Ajouter un DVD</a>
-        {% if dvds %}
-            <table border="1">
-                <tr>
-                    <th>Titre</th>
-                    <th>Réalisateur</th>
-                    <th>Action</th>
-                </tr>
-                {% for dvd in dvds %}
-                <tr>
-                    <td><strong>{{ dvd.titre }}</strong></td>
-                    <td>{{ dvd.realisateur }}</td>
-                    <td>
-                        <a href="{% url 'emprunter_media' media_type='dvd' media_id=dvd.id %}" class="btn">🎬 Emprunter</a>
-                    </td>
-                </tr>
-                {% endfor %}
-            </table>
-        {% else %}
-            <p>Aucun DVD disponible.</p>
-        {% endif %}
-    </section>
-
-    <!-- Section des Jeux de Plateau -->
-    <section>
-        <h2>🎲 Jeux de Plateau</h2>
-        <a href="{% url 'ajouter_jeu_de_plateau' %}">➕ Ajouter un jeu de plateau</a>
-        {% if jeux %}
-            <table border="1">
-                <tr>
-                    <th>Titre</th>
-                    <th>Créateur</th>
-                    <th>Action</th>
-                </tr>
-                {% for jeu in jeux %}
-                <tr>
-                    <td><strong>{{ jeu.nom }}</strong></td>
-                    <td>{{ jeu.createur }}</td>
-                    <td>
-                        <a href="{% url 'emprunter_media' media_type='jeu' media_id=jeu.id %}" class="btn">🎲 Emprunter</a>
-                    </td>
-                </tr>
-                {% endfor %}
-            </table>
-        {% else %}
-            <p>Aucun jeu de plateau disponible.</p>
-        {% endif %}
-    </section>
-
-{% endblock %}
+<!-- Section des Jeux de Plateau -->
+<section>
+    <h2>🎲 Jeux de Plateau</h2>
+    {% if jeux %}
+        {% for jeu in jeux %}
+            <p>{{ jeu.titre }} - Créé par {{ jeu.createur }}</p>
+        {% endfor %}
+    {% else %}
+        <p>Aucun jeu de plateau disponible.</p>
+    {% endif %}
+</section>

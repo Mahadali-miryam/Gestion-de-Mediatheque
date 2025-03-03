@@ -18,6 +18,7 @@ urlpatterns = [
     path('cds/', views.liste_cds, name='liste_cds'),
     path('dvds/', views.liste_dvds, name='liste_dvds'),
     path('jeux/', views.liste_jeux, name='liste_jeux'),
+
     path('ajouter-livre/', views.ajouter_livre, name='ajouter_livre'),
     path('ajouter-dvd/', views.ajouter_dvd, name='ajouter_dvd'),
     path('ajouter-cd/', views.ajouter_cd, name='ajouter_cd'),

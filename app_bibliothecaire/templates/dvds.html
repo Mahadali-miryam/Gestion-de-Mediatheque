@@ -16,7 +16,7 @@
 
             <!-- Vérifie si le DVD est disponible avant de proposer la suppression -->
             {% if dvd.disponible %}
-            <a href="{% url 'supprimer_dvd' dvd.id %}" onclick="return confirm('Voulez-vous vraiment supprimer ce DVD ?');">❌ Supprimer</a>
+                <a href="{% url 'supprimer_media' media_type='dvd' media_id=dvd.id %}" onclick="return confirm('Voulez-vous vraiment supprimer ce DVD ?');"> 🗑 Supprimer</a>
             {% endif %}
         </li>
         {% endfor %}

@@ -19,7 +19,7 @@
 
             <!-- Vérifie si le livre est disponible avant d'afficher le bouton supprimer -->
             {% if livre.disponible %}
-                <a href="{% url 'supprimer_livre' livre.id %}"> ❌ Supprimer</a>
+               <a href="{% url 'supprimer_media' media_type='livre' media_id=livre.id %}"> 🗑 Supprimer</a>
             {% endif %}
         </li>
         {% endfor %}

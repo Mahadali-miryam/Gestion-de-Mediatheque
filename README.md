@@ -17,16 +17,18 @@ Ce projet est une application Django permettant de moderniser la gestion d'une m
  - Gérer les emprunts et les retours de médias.
  - Afficher la liste des emprunts en cours ou en retard.
 
-2 Application Membre:
+Application Membre:
 
 Consulter la liste des médias disponibles.
 
 # Installation
+
+## Exécution du projet
 Cloner le dépôt :
 git clone https://github.com/Mahadali-miryam/Gestion-de-Mediatheque.git
 cd Gestion-de-Mediatheque
 
-3 Créer et activer un environnement virtuel :
+ Créer et activer un environnement virtuel :
 
 . python -m venv venv
 
@@ -34,16 +36,16 @@ cd Gestion-de-Mediatheque
 
 . pip install -r requirements.txt
 
-4 Configurer la base de données :
+ Configurer la base de données :
 
 . python manage.py makemigrations
 . python manage.py migrate
 . Charger des données de test (fixtures) :
 . python manage.py loaddata app_bibliothecaire/fixtures/membres.json
 
-5 Créer un superutilisateur : python manage.py createsuperuser
+ Créer un superutilisateur : python manage.py createsuperuser
 
-6 Lancer le serveur de développement : python manage.py runserver
+Lancer le serveur de développement : python manage.py runserver
 
 L'application sera accessible à l'adresse : http://127.0.0.1:8000/
 

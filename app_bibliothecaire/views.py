@@ -11,13 +11,13 @@ from django.contrib import messages
 logger = logging.getLogger('app_mediatheque')
 
 
-# 🔹 Déconnexion
+#  Déconnexion
 def custom_logout(request):
     logout(request)
-    return render(request, 'logout.html')
+    return redirect('login')
 
 
-# 🔹 Connexion utilisateur
+#  Connexion utilisateur
 def custom_login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -27,17 +27,22 @@ def custom_login(request):
             login(request, user)
             return redirect('liste_emprunts')
         else:
-            return render(request, 'login.html', {'error_message': 'Identifiants incorrects'})
-    return render(request, 'login.html')
+            return render(request, 'registration/login.html', {'error_message': 'Identifiants incorrects'})
+    return render(request, 'registration/login.html')
 
-
-# 🔹 Liste des membres
+#  Liste des membres
 def liste_membres(request):
+    print("🎯 DEBUG ACTIVÉ DANS VUE MEMBRES")
+
     membres = Membre.objects.all()
+    print(f"🔍 Nombre de membres récupérés : {membres.count()}")
+    for membre in membres:
+        print(f"👤 Membre : {membre.nom}")
+
     return render(request, 'liste_membres.html', {'membres': membres})
 
 
-# 🔹 Ajouter un membre
+#  Ajouter un membre
 def ajout_membre(request):
     if request.method == 'POST':
         form = Creationmembre(request.POST)
@@ -49,7 +54,7 @@ def ajout_membre(request):
     return render(request, 'ajout_membre.html', {'form': form})
 
 
-# 🔹 Modifier un membre
+#  Modifier un membre
 def modifier_membre(request, membre_id):
     membre = get_object_or_404(Membre, pk=membre_id)
     if request.method == 'POST':
@@ -61,24 +66,24 @@ def modifier_membre(request, membre_id):
     return render(request, 'modifier_membre.html', {'membre': membre})
 
 
-# 🔹 Supprimer un membre
+#  Supprimer un membre
 def supprimer_membre(request, membre_id):
     membre = get_object_or_404(Membre, pk=membre_id)
     membre.delete()
     return redirect('liste_membres')
 
 
-# 🔹 Liste des médias
+#  Liste des médias
 def liste_medias(request):
     return render(request, 'liste_medias.html', {
         'livres': Livre.objects.all(),
         'dvds': DVD.objects.all(),
         'cds': CD.objects.all(),
         'jeux': JeuDePlateau.objects.all()
-    })  # ✅ Correction ici
+    })
 
 
-# 📚 Liste des livres
+#  Liste des livres
 def liste_livres(request):
     livres = Livre.objects.all()
     return render(request, 'livres.html', {'livres': livres})
@@ -90,20 +95,20 @@ def liste_cds(request):
     return render(request, 'cds.html', {'cds': cds})
 
 
-# 🎬 Liste des DVDs
+#  Liste des DVDs
 def liste_dvds(request):
     dvds = DVD.objects.all()
     return render(request, 'dvds.html', {'dvds': dvds})
 
 
-# 🎲 Liste des jeux de plateau
+#  Liste des jeux de plateau
 def liste_jeux(request):
     jeux = JeuDePlateau.objects.all()
-    return render(request, 'jeuxdeplateau.html', {'jeux': jeux})
+    return render(request, 'jeudeplateau.html', {'jeux': jeux})
 
 
 
-# 🔹 Ajouter des médias
+# Ajouter des médias
 def ajouter_livre(request):
     if request.method == 'POST':
         titre = request.POST.get('titre')
@@ -144,7 +149,7 @@ def ajouter_jeu_de_plateau(request):
     return render(request, 'ajouter_jeu_de_plateau.html')
 
 
-# 🔹 Suppression d’un média
+# Suppression d’un média
 def supprimer_media(request, media_type, media_id):
     if media_type == 'livre':
         media = get_object_or_404(Livre, id=media_id)
@@ -160,7 +165,7 @@ def supprimer_media(request, media_type, media_id):
     messages.success(request, f"{media_type.capitalize()} supprimé avec succès !")
     return redirect('liste_medias')
 
-# 🔹 Liste des emprunts
+# Liste des emprunts
 def liste_emprunts(request):
     emprunts = Emprunt.objects.select_related('membre').all()
 
@@ -186,30 +191,29 @@ def liste_emprunts(request):
 
     return render(request, 'liste_emprunts.html', {'emprunts': emprunts})
 
-
-
-# 🔹 Emprunter un média
+#  Emprunter un média
 def emprunter_media(request, media_type, media_id):
-    """Permet à un membre d'emprunter un livre, un DVD ou un CD avec des restrictions."""
-
-    # Définition des types de médias valides
     media_classes = {'livre': Livre, 'dvd': DVD, 'cd': CD}
 
     if media_type not in media_classes:
         return HttpResponseBadRequest("❌ Type de média invalide.")
 
-    # Récupération du média
-    media = get_object_or_404(media_classes[media_type], pk=media_id)
-
     if request.method == 'POST':
         membre_id = request.POST.get('membre_id')
+        media_id_post = request.POST.get('media_id')  # ← celui du formulaire
+
         membre = get_object_or_404(Membre, pk=membre_id)
+        media = get_object_or_404(media_classes[media_type], pk=media_id_post)
+
+        print(f"📚 {media.titre} - Disponible avant emprunt: {media.disponible}")
 
         # Vérifications
         if Emprunt.objects.filter(membre=membre).count() >= 3:
             return HttpResponseBadRequest("⚠️ Vous avez atteint la limite de 3 emprunts.")
-        if Emprunt.objects.filter(membre=membre, media_type=media_type, media_id=media_id).exists():
+
+        if Emprunt.objects.filter(membre=membre, media_type=media_type, media_id=media.id).exists():
             return HttpResponseBadRequest("⚠️ Vous avez déjà emprunté ce média.")
+
         if not media.disponible:
             return HttpResponseBadRequest("⚠️ Ce média est déjà emprunté.")
 
@@ -217,55 +221,58 @@ def emprunter_media(request, media_type, media_id):
         nouvel_emprunt = Emprunt.objects.create(
             membre=membre,
             media_type=media_type,
-            media_id=media_id,
+            media_id=media.id,
             date_emprunt=timezone.now(),
             date_retour=timezone.now() + timedelta(days=7)
         )
 
-        # Marquer le média comme non disponible
         media.disponible = False
         media.save()
 
-        logger.info(f"{membre.nom} a emprunté {media_type} (ID: {media_id})")
-        print(f"DEBUG: {membre.nom} a emprunté {media.titre} ({media_type}) jusqu'au {nouvel_emprunt.date_retour}")
-
+        print(f"✅ {membre.nom} a emprunté {media.titre} ({media_type}) jusqu’au {nouvel_emprunt.date_retour}")
         return redirect('confirmation_emprunt')
 
-    # Vérifie si la liste des médias est bien envoyée au template
+    # GET : Affiche la liste des membres et des médias disponibles
     medias_disponibles = media_classes[media_type].objects.filter(disponible=True)
 
     return render(request, 'emprunter_media.html', {
         'membres': Membre.objects.all(),
-        'medias': medias_disponibles,  # ✅ Vérifie que cette variable est bien passée au template
+        'medias': medias_disponibles,
         'media_type': media_type,
     })
 
 
-# 🔹 Retourner un média
+
+#  Retourner un média
 def retourner_media(request, emprunt_id):
+    """Gère le retour d'un média emprunté et met à jour sa disponibilité correctement."""
+
     emprunt = get_object_or_404(Emprunt, pk=emprunt_id)
+
+    # Définition des types de médias valides
     media_classes = {'livre': Livre, 'dvd': DVD, 'cd': CD}
+
+    if emprunt.media_type not in media_classes:
+        return HttpResponseBadRequest("❌ Type de média invalide.")
+
+    # Récupération du média associé
     media = get_object_or_404(media_classes[emprunt.media_type], pk=emprunt.media_id)
 
-    # Supprimer l'emprunt
+    # 🔥 Suppression de l'emprunt
     emprunt.delete()
 
-    # Vérifier s'il reste des emprunts actifs pour ce média
-    emprunts_restant = Emprunt.objects.filter(media_type=emprunt.media_type, media_id=emprunt.media_id).exists()
+    # 🔍 Vérifier s'il reste d'autres emprunts actifs pour ce média
+    emprunts_restants = Emprunt.objects.filter(media_type=emprunt.media_type, media_id=media.id)
 
-    # Mettre à jour la disponibilité du média
-    media.disponible = not emprunts_restant
-    media.save()
-    # Vérifier si le livre est encore emprunté
-    livre = get_object_or_404(Livre, pk=emprunt.media_id)
-    emprunts_restant = Emprunt.objects.filter(media_type="livre", media_id=livre.id).exists()
-    livre.disponible = not emprunts_restant
-    livre.save()
+    # ✅ Si plus personne ne l'a emprunté, on le rend disponible
+    if not emprunts_restants.exists():
+        media.disponible = True
+        media.save()
+        print(f"✅ {media.titre} est maintenant disponible après retour.")
 
-    logger.info(f"{emprunt.membre.nom} a retourné un {emprunt.media_type} (ID: {emprunt.media_id})")
     return redirect('liste_emprunts')
 
-# 🔹 Pages d’information
+# Pages d’information
 def confirmation_emprunt(request):
     return render(request, 'confirmation_emprunt.html')
 
@@ -278,3 +285,14 @@ def emprunts_en_retard(request):
 def limite_emprunts(request):
     emprunts = Emprunt.objects.select_related('membre').all()
     return render(request, 'limite_emprunts.html',)
+
+def creer_membre_emprunteur(request):
+    if request.method == 'POST':
+        form = Creationmembre(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('liste_membres')
+    else:
+        form = Creationmembre()
+
+    return render(request, 'app_bibliothecaire/creer_membre_emprunteur.html', {'form': form})

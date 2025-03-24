@@ -27,31 +27,28 @@ git clone https://github.com/Mahadali-miryam/Gestion-de-Mediatheque.git
 cd Gestion-de-Mediatheque
 
 Créer et activer un environnement virtuel :
-python -m venv venv
 
-venv\Scripts\activate
+. python -m venv venv
 
-pip install -r requirements.txt
+. venv\Scripts\activate
+
+. pip install -r requirements.txt
+
 Configurer la base de données :
 
-python manage.py makemigrations
-python manage.py migrate
-Charger des données de test (fixtures) :
+. python manage.py makemigrations
+. python manage.py migrate
+. Charger des données de test (fixtures) :
+. python manage.py loaddata app_bibliothecaire/fixtures/membres.json
 
-python manage.py loaddata app_bibliothecaire/fixtures/membres.json
-Créer un superutilisateur :
+Créer un superutilisateur : python manage.py createsuperuser
 
-python manage.py createsuperuser
-Lancer le serveur de développement :
+Lancer le serveur de développement : python manage.py runserver
 
-
-python manage.py runserver
 L'application sera accessible à l'adresse : http://127.0.0.1:8000/
 
 # Tests
-Pour exécuter les tests unitaires :
-
-python manage.py test
+Pour exécuter les tests unitaires : python manage.py test
 
 # Structure du projet
 

@@ -6,7 +6,7 @@ Ce projet est une application Django permettant de moderniser la gestion d'une m
 
 # Fonctionnalités
 
-Application Bibliothécaire:
+1 Application Bibliothécaire:
 
  - Créer, modifier et supprimer des membres.
  - Ajouter, modifier et supprimer des médias :
@@ -17,7 +17,7 @@ Application Bibliothécaire:
  - Gérer les emprunts et les retours de médias.
  - Afficher la liste des emprunts en cours ou en retard.
 
-Application Membre:
+2 Application Membre:
 
 Consulter la liste des médias disponibles.
 
@@ -26,7 +26,7 @@ Cloner le dépôt :
 git clone https://github.com/Mahadali-miryam/Gestion-de-Mediatheque.git
 cd Gestion-de-Mediatheque
 
-Créer et activer un environnement virtuel :
+3 Créer et activer un environnement virtuel :
 
 . python -m venv venv
 
@@ -34,16 +34,16 @@ Créer et activer un environnement virtuel :
 
 . pip install -r requirements.txt
 
-Configurer la base de données :
+4 Configurer la base de données :
 
 . python manage.py makemigrations
 . python manage.py migrate
 . Charger des données de test (fixtures) :
 . python manage.py loaddata app_bibliothecaire/fixtures/membres.json
 
-Créer un superutilisateur : python manage.py createsuperuser
+5 Créer un superutilisateur : python manage.py createsuperuser
 
-Lancer le serveur de développement : python manage.py runserver
+6 Lancer le serveur de développement : python manage.py runserver
 
 L'application sera accessible à l'adresse : http://127.0.0.1:8000/
 

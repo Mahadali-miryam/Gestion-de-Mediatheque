@@ -1,13 +1,14 @@
 from django.urls import path
 from . import views
 
+
 urlpatterns = [
     # 🔐 Authentification
     path('', views.custom_login, name='login'),
     path('logout/', views.custom_logout, name='logout'),
 
     # 👥 Gestion des membres
-    path('membres/', views.liste_membres, name='liste_membres'),
+    path('membre/liste/', views.liste_membres, name='liste_membres'),
     path('ajout-membre/', views.ajout_membre, name='ajout_membre'),
     path('modifier-membre/<int:membre_id>/', views.modifier_membre, name='modifier_membre'),
     path('supprimer-membre/<int:membre_id>/', views.supprimer_membre, name='supprimer_membre'),

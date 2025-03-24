@@ -3,7 +3,7 @@
         "model": "app_bibliothecaire.membre",
         "pk": 1,
         "fields": {
-            "nom": "Megane SIGNES"
+            "nom": "Megan SIGNES"
         }
     },
     {
@@ -11,6 +11,14 @@
         "pk": 2,
         "fields": {
             "nom": "Maeva AVA"
+
+        }
+    },
+     {
+        "model": "app_bibliothecaire.membre",
+        "pk": 3,
+        "fields": {
+            "nom": "Prisca KAKAY"
 
         }
     }

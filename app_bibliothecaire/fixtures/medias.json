@@ -4,7 +4,7 @@
         "pk": 1,
         "fields": {
             "titre": "Bad",
-            "date_emprunt": "2024-06-20T00:00:00Z ",
+            "date_emprunt": "2024-06-20T00:00:00Z",
             "disponible": false,
             "emprunteur": 2,
             "artiste": "Michael Jackson"
@@ -21,7 +21,29 @@
             "artiste": "Madonna"
         }
     },
-      {
+    {
+        "model": "app_bibliothecaire.cd",
+        "pk": 3,
+        "fields": {
+            "titre": "Thriller",
+            "date_emprunt": null,
+            "disponible": true,
+            "emprunteur": null,
+            "artiste": "Michael Jackson"
+        }
+    },
+    {
+        "model": "app_bibliothecaire.cd",
+        "pk": 4,
+        "fields": {
+            "titre": "Back in Black",
+            "date_emprunt": null,
+            "disponible": true,
+            "emprunteur": null,
+            "artiste": "AC/DC"
+        }
+    },
+    {
         "model": "app_bibliothecaire.livre",
         "pk": 1,
         "fields": {
@@ -37,6 +59,26 @@
         "fields": {
             "titre": "Chroniques martiennes",
             "auteur": "Ray Bradbury",
+            "disponible": true,
+            "emprunteur": null
+        }
+    },
+    {
+        "model": "app_bibliothecaire.livre",
+        "pk": 3,
+        "fields": {
+            "titre": "Le Seigneur des Anneaux",
+            "auteur": "J.R.R. Tolkien",
+            "disponible": true,
+            "emprunteur": null
+        }
+    },
+    {
+        "model": "app_bibliothecaire.livre",
+        "pk": 4,
+        "fields": {
+            "titre": "1984",
+            "auteur": "George Orwell",
             "disponible": true,
             "emprunteur": null
         }
@@ -60,8 +102,61 @@
             "disponible": true,
             "emprunteur": null
         }
+    },
+    {
+        "model": "app_bibliothecaire.dvd",
+        "pk": 3,
+        "fields": {
+            "titre": "Inception",
+            "realisateur": "Christopher Nolan",
+            "disponible": true,
+            "emprunteur": null
+        }
+    },
+    {
+        "model": "app_bibliothecaire.dvd",
+        "pk": 4,
+        "fields": {
+            "titre": "Forrest Gump",
+            "realisateur": "Robert Zemeckis",
+            "disponible": true,
+            "emprunteur": null
+        }
+    },
+    {
+        "model": "app_bibliothecaire.jeudeplateau",
+        "pk": 1,
+        "fields": {
+            "nom": "Les Aventuriers du Rail",
+            "createur": "Alan R. Moon"
+
+        }
+    },
+    {
+        "model": "app_bibliothecaire.jeudeplateau",
+        "pk": 2,
+        "fields": {
+            "nom": "Catan",
+            "createur": "Klaus Teuber"
+
+        }
+    },
+    {
+        "model": "app_bibliothecaire.jeudeplateau",
+        "pk": 3,
+        "fields": {
+            "nom": "Carcassonne",
+            "createur": "Klaus-Jürgen Wrede"
+
+        }
+    },
+    {
+        "model": "app_bibliothecaire.jeudeplateau",
+        "pk": 4,
+        "fields": {
+            "nom": "Risk",
+            "createur": "Albert Lamorisse"
+
+        }
     }
-
 ]
-
-

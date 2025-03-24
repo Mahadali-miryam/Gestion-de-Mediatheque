@@ -14,5 +14,29 @@
             "nom": "Maeva AVA",
             "email": "maeva@example.com"
         }
+    },
+{
+        "model": "app_bibliothecaire.membre",
+        "pk": 3,
+        "fields": {
+            "nom": "Prisca KAKAY",
+            "email": "priscakakay@example.com"
+        }
+    },
+    {
+        "model": "app_bibliothecaire.membre",
+        "pk": 4,
+        "fields": {
+            "nom": "Sophie LEMAIRE",
+            "email": "sophie.lemaire@example.com"
+        }
+    },
+    {
+        "model": "app_bibliothecaire.membre",
+        "pk": 5,
+        "fields": {
+            "nom": "Thomas DURAND",
+            "email": "thomas.durand@example.com"
+        }
     }
 ]

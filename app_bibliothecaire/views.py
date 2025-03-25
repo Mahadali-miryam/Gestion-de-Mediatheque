@@ -286,7 +286,7 @@ def limite_emprunts(request):
     emprunts = Emprunt.objects.select_related('membre').all()
     return render(request, 'limite_emprunts.html',)
 
-def creer_membre_emprunteur(request):
+def ajout_membre(request):
     if request.method == 'POST':
         form = Creationmembre(request.POST)
         if form.is_valid():
@@ -295,4 +295,4 @@ def creer_membre_emprunteur(request):
     else:
         form = Creationmembre()
 
-    return render(request, 'app_bibliothecaire/creer_membre_emprunteur.html', {'form': form})
+    return render(request, 'app_bibliothecaire/ajout_membre.html', {'form': form})

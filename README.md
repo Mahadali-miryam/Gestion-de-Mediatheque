@@ -71,8 +71,8 @@ db.sqlite3 : base de données locale
 - Un emprunt est limité à 7 jours.
 - Les jeux de plateau ne sont pas empruntables.
 
- Rapport du Projet
-Étude et correctifs du code fourni
+#  Rapport du Projet
+# Étude et correctifs du code fourni
 Le projet initial fourni était très basique et présentait plusieurs défauts importants que j'ai rapidement identifiés :
 
 Les modèles n’étaient pas bien structurés et les contraintes métier essentielles n’étaient pas intégrées.
@@ -81,7 +81,7 @@ La gestion des emprunts était absente, ainsi que la différenciation entre les 
 
 La séparation entre l’application des bibliothécaires et celle des membres n’était pas claire.
 
-Ce que j’ai corrigé :
+# Ce que j’ai corrigé :
 
 Création claire et structurée des modèles Django (Livre, DVD, CD, JeuDePlateau, Emprunt, Membre).
 
@@ -89,7 +89,7 @@ Application stricte des contraintes métier : limite de 3 emprunts maximum par m
 
 Séparation explicite des applications : app_bibliothecaire (gestion complète des médias et des membres) et app_membre (consultation uniquement).
 
- Mise en place des fonctionnalités demandées
+ # Mise en place des fonctionnalités demandées
 Application Bibliothécaire :
 
 Gestion complète des membres : ajouter, modifier et supprimer facilement.
@@ -102,7 +102,7 @@ Application Membre :
 
 Consultation facile et claire de la liste complète des médias disponibles.
 
-Stratégie de tests
+# Stratégie de tests
 J’ai mis en place des tests unitaires afin de garantir que chaque fonctionnalité importante fonctionne correctement :
 
 Utilisation des classes TestCase de Django pour tester en détail les modèles et les vues.
@@ -117,7 +117,7 @@ La gestion des médias déjà empruntés.
 
 Ces tests automatiques assurent une stabilité et une fiabilité à mon application.
 
- Base de données avec données test
+#  Base de données avec données test
 J’ai choisi SQLite pour la simplicité d’utilisation et d’installation rapide. J’ai intégré des données de test via des fixtures au format JSON (fixtures.json) :
 
 Membres fictifs comme Megane SIGNES ou Maeva AVA.

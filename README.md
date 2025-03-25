@@ -73,7 +73,7 @@ db.sqlite3 : base de données locale
 
 #  Rapport du Projet
 # Étude et correctifs du code fourni
-Le projet initial fourni était très basique et présentait plusieurs défauts importants que j'ai rapidement identifiés :
+Le code initial commencé par le developpeur était très basique et présentait plusieurs défauts importants que j'ai rapidement identifiés :
 
 Les modèles n’étaient pas bien structurés et les contraintes métier essentielles n’étaient pas intégrées.
 

@@ -1,0 +1,26 @@
+# Fichiers Python compilés
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environnement virtuel
+venv/
+.env
+
+# Base de données SQLite
+db.sqlite3
+
+# Migrations Django
+app_bibliothecaire/migrations/
+app_membre/migrations/
+
+# Fichiers statiques collectés
+staticfiles/
+
+# Fichiers de logs
+*.log
+
+# Fichiers système (Windows, macOS, Linux)
+.DS_Store
+Thumbs.db

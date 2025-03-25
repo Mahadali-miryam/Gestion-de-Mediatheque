@@ -26,6 +26,7 @@ Consulter la liste des médias disponibles.
 ## Exécution du projet
 Cloner le dépôt :
 git clone https://github.com/Mahadali-miryam/Gestion-de-Mediatheque.git
+
 cd Gestion-de-Mediatheque
 
  Créer et activer un environnement virtuel :
@@ -60,7 +61,9 @@ templates/ : fichiers HTML
 
 fixtures/ : données de test
 
-static/ : fichiers statiques (CSS, images...)
+static/ : fichiers statiques (images...)
+
+app_membre/ : application pour les membres (consultation)
 
 db.sqlite3 : base de données locale
 

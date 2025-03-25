@@ -71,4 +71,52 @@ db.sqlite3 : base de données locale
 - Un emprunt est limité à 7 jours.
 - Les jeux de plateau ne sont pas empruntables.
 
+Rapport du Projet : Gestion de Médiathèque
+Étude et correctifs du code fourni
+Le projet initial fourni était très basique et présentait plusieurs défauts importants que
+j'ai rapidement identifiés :
+• Les modèles n’étaient pas bien structurés et les contraintes métier essentielles
+n’étaient pas intégrées.
+• La gestion des emprunts était absente, ainsi que la différenciation entre les
+types de médias.
+• La séparation entre l’application des bibliothécaires et celle des membres
+n’était pas claire.
+Ce que j’ai corrigé :
+• Création claire et structurée des modèles Django (Livre, DVD, CD,
+JeuDePlateau, Emprunt, Membre).
+• Application stricte des contraintes métier : limite de 3 emprunts maximum par
+membre, obligation de retour après 7 jours, blocage de nouveaux emprunts en
+cas de retard.
+• Séparation explicite des applications : app_bibliothecaire (gestion complète
+des médias et des membres) et app_membre (consultation uniquement).
+Mise en place des fonctionnalités demandées
+Application Bibliothécaire :
+• Possibilité complète de gestion des membres : ajouter, modifier et supprimer
+facilement.
+• Gestion complète des médias : ajout, modification et suppression des livres,
+CDs, DVDs et jeux de plateau.
+• Gestion des emprunts avec création, retour des médias et affichage clair des
+emprunts en cours, tout en respectant automatiquement les règles métier
+définies.
+Application Membre :
+• Consultation facile et claire de la liste complète des médias disponibles.
+Stratégie de tests
+J’ai mis en place des tests unitaires afin de garantir que chaque fonctionnalité
+importante fonctionne correctement :
+• Utilisation des classes TestCase de Django pour tester en détail les modèles et
+les vues.
+• Tests précis réalisés pour valider :
+o Le bon fonctionnement de la gestion des emprunts.
+o Le respect des limites imposées (nombre maximum d'emprunts, durée
+d'emprunt).
+o La gestion des médias déjà empruntés.
+Ces tests automatiques assurent une stabilité et une fiabilité à mon application.
+Base de données avec données test
+J’ai choisi SQLite pour la simplicité d’utilisation et d’installation rapide. J’ai intégré des
+données de test via des fixtures au format JSON (fixtures.json) :
+• Membres fictifs comme Megane SIGNES ou Maeva AVA.
+• Médias fictifs pour illustrer différents cas d'utilisation comme "Le Seigneur des
+Anneaux", "Harry Potter", "1984".
+• Emprunts fictifs montrant les cas normaux et les cas limites du projet.
+
 

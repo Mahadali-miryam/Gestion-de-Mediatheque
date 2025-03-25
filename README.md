@@ -1,7 +1,7 @@
 
 # Gestion-de-Mediatheque
 
-Description
+# Description
 Ce projet est une application Django permettant de moderniser la gestion d'une médiathèque. Il offre deux interfaces : une pour les bibliothécaires (gestion des membres, emprunts, médias...) et une pour les membres (consultation des médias).
 
 # Fonctionnalités
